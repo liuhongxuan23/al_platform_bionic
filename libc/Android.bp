@@ -51,6 +51,8 @@ libc_common_flags = [
     // Clang's exit-time destructor registration hides __dso_handle, but
     // __dso_handle needs to have default visibility on ARM32. See b/73485611.
     "-Wexit-time-destructors",
+
+    "-fno-omit-frame-pointer",
 ]
 
 // Define some common cflags

@@ -81,6 +81,8 @@ cc_library {
         "-Wextra",
         "-Wunused",
         "-Werror",
+
+        "-fno-omit-frame-pointer",
     ],
     stl: "none",
 

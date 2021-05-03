@@ -60,6 +60,7 @@ ENTRY(%(func)s)
 # ARM assembler templates for each syscall stub
 #
 
+'''
 arm_eabi_call_default = syscall_stub_header + """\
     mov     ip, r7
     .cfi_register r7, ip
@@ -73,6 +74,7 @@ arm_eabi_call_default = syscall_stub_header + """\
     b       __set_errno_internal
 END(%(func)s)
 """
+'''
 
 arm_eabi_call_long = syscall_stub_header + """\
     mov     ip, sp
@@ -303,9 +305,7 @@ def add_footer(pointer_length, stub, syscall):
 
 def arm_eabi_genstub(syscall):
     num_regs = count_arm_param_registers(syscall["params"])
-    if num_regs > 4:
-        return arm_eabi_call_long % syscall
-    return arm_eabi_call_default % syscall
+    return arm_eabi_call_long % syscall
 
 
 def arm64_genstub(syscall):
